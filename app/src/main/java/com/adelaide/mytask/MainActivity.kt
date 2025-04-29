@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,18 +21,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import android.R.attr.letterSpacing
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.tooling.preview.Preview
 import com.adelaide.mytask.ui.theme.MyTaskTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             MyTaskTheme {
                 Surface {
@@ -59,7 +57,7 @@ fun SayHello() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            color = Color.Green,
+            color = Color.Red,
             fontSize = 40.sp,
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold,
