@@ -24,155 +24,134 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.TextField
+import androidx.compose.runtime.internal.enableLiveLiterals
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import com.adelaide.mytask.ui.theme.MyTaskTheme
-
+import java.nio.file.WatchEvent
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             MyTaskTheme {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp), color = Color(0xFFEDE7F6)
-                ) {
-                    FeedbackForm()
+                Surface() {
+                    LoginForm()
                 }
             }
         }
     }
 }
 
-@Composable
-fun FeedbackForm() {
 
+@Composable
+fun LoginForm() {
     Column(
         modifier = Modifier
-            .padding(20.dp)
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+            .padding(100.dp)
+            .fillMaxSize()
+            .fillMaxWidth()
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-
+        verticalArrangement = Arrangement.Center
+    )
+    {
         Text(
-            text = "Feedback Form",
-
-            modifier = Modifier,
-            fontSize = 40.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF6200EE),
-            textAlign = TextAlign.Center
+            text = "Welcome Back",
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold
         )
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text("Name") },
-            placeholder = { Text("Enter your name") })
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text("Your Feedback") },
-            placeholder = { Text("Enter your Feedback") })
 
         Spacer(modifier = Modifier.height(20.dp))
 
-
-        Row(
-            modifier = Modifier,
+        Button(
+            onClick = {}
         ) {
+            Text(
+                text = "Sign in with Google",
+                fontWeight = FontWeight.Bold,
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Or, sign in with your email"
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            label = { Text("Email address") },
+            placeholder = {
+                Text(
+                    text = "Enter your email address",
+
+                )
+            }
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            label = { Text("Password ") },
+            placeholder = { Text("Enter your password") }
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+
+        Row {
+            Text(
+                text = "Keep me signed in", fontSize = 10.sp
+            )
+            Spacer(modifier = Modifier.width(15.dp))
+
+
 
             Text(
-                text = "Subscribe to newsletter"
-            )
-            Spacer(modifier = Modifier.width(30.dp))
-
-
-            Switch(
-                checked = true, onCheckedChange = null
+                text = "Forgot password",
+                style = TextStyle(
+                    fontSize = 12.sp,
+                    textDecoration = TextDecoration.Underline
+                )
             )
 
-        }
-
-        Text("Rating:")
-
-        Row() {
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-
-
-
-            Row() {
-                RadioButton(
-                    selected = false, onClick = {})
-                Text("Poor")
-            }
-            Row() {
-                RadioButton(
-                    selected = false, onClick = {})
-                Text("Average")
-            }
-        }
-
-        Row() {
-            Row() {
-                RadioButton(
-                    selected = false, onClick = {})
-                Text("Good")
-            }
-
-            Row() {
-                RadioButton(
-                    selected = false, onClick = {})
-                Text("Excellent")
-            }
 
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
-                checked = true,
-                onCheckedChange = null
-            )
-            Text("I confirm my feedback is honest")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-
         Button(
-            onClick = {}) {
-            Text("Submit")
+            onClick = {}
+        ) {
+            Text("Sign in")
         }
+
+
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        FeedbackForm()
+        LoginForm()
     }
 }
+
 
 
